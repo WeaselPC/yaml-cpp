@@ -59,6 +59,14 @@ ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC
 ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -O2 -fPIC -std=c++17
 ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -s
 
+else ifeq ($(config),dist_x64)
+TARGETDIR = bin/Dist-linux-x86_64/yaml-cpp
+TARGET = $(TARGETDIR)/libyaml-cpp.a
+OBJDIR = bin-int/Dist-linux-x86_64/yaml-cpp
+ALL_CFLAGS += $(CFLAGS) $(ALL_CPPFLAGS) -m64 -flto -O2 -fPIC -g
+ALL_CXXFLAGS += $(CXXFLAGS) $(ALL_CPPFLAGS) -m64 -flto -O2 -fPIC -g -std=c++17
+ALL_LDFLAGS += $(LDFLAGS) -L/usr/lib64 -m64 -flto
+
 endif
 
 # Per File Configurations
